@@ -1,0 +1,96 @@
+# ============================================================
+# Hackathon compliant + Enterprise ready
+# ============================================================
+
+paths:
+  paths:
+  # Use relative path that works in both local and Docker environments
+  # Can be overridden by DATASET_DIR environment variable
+  dataset_dir: "../Dataset/[PUB] India_runs_data_and_ai_challenge/India_runs_data_and_ai_challenge"
+  candidates_file: "candidates.jsonl"
+  sample_candidates_file: "sample_candidates.json"
+  jd_file: "job_description.docx"
+  redrob_signals_doc: "redrob_signals_doc.docx"
+  output_dir: "results"
+  submission_filename: "submission.csv"
+
+model:
+  # Upgraded from all-MiniLM-L6-v2
+  # Better semantic understanding, same speed, same size
+  embedding_model: "BAAI/bge-small-en-v1.5"
+  embedding_dimension: 384
+  batch_size: 64
+
+scoring_weights:
+  semantic_fit: 0.25
+  skill_match: 0.30
+  redrob_signals: 0.15
+  career_trajectory: 0.20
+  experience_fit: 0.07
+  profile_quality: 0.03   
+
+fusion:
+  method: "weighted_geometric"
+  zero_handling: "epsilon"
+  epsilon: 0.001
+
+# ── Vector Store ───────────────────────────────────────────
+# backend: "qdrant"
+# backend: "numpy" as fallback if qdrant fails
+vector_store:
+  backend: "qdrant"
+
+# ── Qdrant Config ──────────────────────────────────────────
+# mode: "local" = stores data in ./qdrant_data folder
+# No server needed, no cloud needed, fully offline
+# Hackathon compliant
+qdrant:
+  mode: "local"
+  local_path: "./qdrant_data"
+  collection_name: "candidates"
+
+skill_matching:
+  fuzzy_threshold: 80
+  use_synonym_expansion: true
+
+redrob:
+  open_to_work_weight: 0.20
+  response_rate_weight: 0.15
+  profile_completeness_weight: 0.15
+  github_activity_weight: 0.12
+  skill_assessment_weight: 0.12
+  notice_period_weight: 0.10
+  salary_fit_weight: 0.08
+  verification_weight: 0.08
+  notice_period_ideal_max: 30
+  notice_period_acceptable: 60
+  github_na_value: -1
+  offer_acceptance_na_value: -1
+
+behavioral:
+  recency_decay_days: 180
+
+career:
+  seniority_levels:
+    - "intern"
+    - "junior"
+    - "mid"
+    - "senior"
+    - "lead"
+    - "principal"
+    - "director"
+    - "vp"
+    - "c-level"
+
+quality:
+  min_completeness_threshold: 0.3
+  anomaly_penalty: 0.10
+
+output:
+  top_k: 100
+  include_explanations: true
+  format: "csv"
+
+challenge:
+  use_sample_only: false
+  max_reasoning_length: 150

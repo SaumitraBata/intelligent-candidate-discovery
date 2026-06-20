@@ -1,0 +1,25 @@
+# --- Core Intelligence & Embeddings ---
+sentence-transformers>=5.4.1       # Massive updates to SBERT; native Matryoshka & Quantization support
+scikit-learn>=1.9.0               # Upgraded clustering (HDBSCAN improvements) and faster ML utilities
+
+# --- High-Performance Text & Fuzzy Matching ---
+rapidfuzz>=3.14.5                 # Hyper-optimized C++ string matching for parsing resumes/titles
+
+# --- Modern Data Pipelines (Requires Python 3.11+) ---
+pandas>=3.0.3                     # Enforces Copy-on-Write (CoW) and default PyArrow-backed 'str' types
+numpy>=2.0.0                      # Landmark 2.0 architecture with optimized SIMD and faster array math
+
+# --- Configuration & Pipeline Safety ---
+pyyaml>=6.0.1                     # Stable, secure configuration parser
+jsonschema>=4.22.0                # Validates structured candidate profiles and API schemas
+tqdm>=4.66.4                      # Smooth progress indicators for bulk resume ingestion
+
+
+python-docx==1.1.2
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+python-multipart==0.0.9
+websockets==12.0
+aiofiles==23.2.1
+qdrant-client==1.9.1
+gdown==5.2.0

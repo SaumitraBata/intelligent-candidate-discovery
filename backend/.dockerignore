@@ -1,0 +1,41 @@
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test artifacts
+.pytest_cache/
+.coverage
+test_*.py
+verify_*.py
+diagnose_*.py
+check_*.py
+
+# Don't ship uploads or temporary files
+uploads/
+exports/
+
+# Logs
+*.log
+*.tmp
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentation (not needed inside container)
+*.md

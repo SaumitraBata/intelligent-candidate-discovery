@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --flux-from: #3b82f6;
+    --flux-to:   #06b6d4;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply bg-[#0a0a0a] text-neutral-200 antialiased;
+    min-height: 100vh;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-feature-settings: "cv11", "ss01", "ss03";
+    letter-spacing: -0.01em;
+  }
+
+  /* Refined scrollbar */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover { background-color: rgba(255, 255, 255, 0.12); }
+
+  ::selection {
+    background: rgba(59, 130, 246, 0.25);
+    color: white;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply bg-neutral-900/40 backdrop-blur-xl border border-neutral-800/80 rounded-xl;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-lg
+           text-sm font-medium transition-all duration-150
+           disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-white text-neutral-900 hover:bg-neutral-100
+           shadow-sm;
+  }
+
+  .btn-secondary {
+    @apply btn bg-neutral-800/60 text-neutral-300 hover:bg-neutral-800
+           hover:text-white border border-neutral-700/60;
+  }
+
+  .btn-ghost {
+    @apply btn text-neutral-400 hover:text-neutral-100 hover:bg-neutral-800/60;
+  }
+
+  .input-field {
+    @apply w-full bg-neutral-900/40 border border-neutral-800
+           rounded-lg px-3 py-2 text-sm text-neutral-200 placeholder-neutral-600
+           focus:outline-none focus:border-neutral-700 focus:bg-neutral-900/60
+           transition-colors duration-150;
+  }
+
+  .kbd {
+    @apply inline-flex items-center justify-center min-w-[20px] h-[20px] px-1.5
+           bg-neutral-800/80 border border-neutral-700/60 text-neutral-400
+           rounded text-[10px] font-mono;
+  }
+}

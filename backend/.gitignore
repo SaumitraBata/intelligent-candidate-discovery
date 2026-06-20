@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/
+*.egg-info/
+
+# Test artifacts
+.pytest_cache/
+.coverage
+test_*.py
+verify_*.py
+diagnose_*.py
+check_*.py
+
+# Temporary
+uploads/
+exports/
+*.log
+*.tmp
+
+# IMPORTANT: Large pre-computed files (hosted externally, see README)
+# Excluded because they exceed GitHub's 100MB limit
+cache/processed_profiles.pkl
+qdrant_data/collection/candidates/storage.sqlite
+
+# But keep the directory structure
+!cache/.gitkeep
+!qdrant_data/.gitkeep

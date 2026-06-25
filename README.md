@@ -83,7 +83,8 @@ If the script fails, download from [this Google Drive link](https://drive.google
 
 ## Architecture Diagram
 
-<img width="1416" height="3627" alt="_- visual selection (2)" src="https://github.com/user-attachments/assets/abce9504-f600-4e97-96eb-87e8122e9d8d" />
+<img width="1416" height="3500" alt="_- visual selection (2)" src="https://github.com/user-attachments/assets/5337e437-b3ca-46e4-87ad-faa0ca4ce8ea" />
+
 
 ---
 

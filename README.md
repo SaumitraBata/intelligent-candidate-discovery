@@ -81,55 +81,10 @@ If the script fails, download from [this Google Drive link](https://drive.google
 
 ---
 
-## Architecture Diagram
+## 🏗️ Architecture Diagram
 
-```
-                              ┌──────────────────┐
-                              │   JD Input        │
-                              │   (.docx / text)  │
-                              └────────┬─────────┘
-                                       │
-                    ┌──────────────────┴──────────────────┐
-                    ▼                                      ▼
-          ┌─────────────────┐                  ┌────────────────────┐
-          │   JD Parser     │                  │   Data Loader      │
-          │   8-layer NLU   │                  │   Smart caching    │
-          │   Skills,       │                  │   100k profiles    │
-          │   importance,   │                  │   (pickle cache)   │
-          │   negatives     │                  └────────┬───────────┘
-          └────────┬────────┘                           │
-                   │                                    │
-                   ▼                                    ▼
-          ┌─────────────────┐                  ┌────────────────────┐
-          │ Embedding Engine│                  │ Qdrant Vector Store│
-          │ BGE-small       │──── search ─────▶│ HNSW over 100k     │
-          │ 384-dim vector  │                  │ ~50ms retrieval    │
-          └─────────────────┘                  └────────────────────┘
-                                                        │
-                    ┌───────────────────────────────────┘
-                    ▼
-          ┌─────────────────────────────────────────────┐
-          │           7-SIGNAL SCORING                  │
-          │                                             │
-          │  Semantic Fit ─── Skill Match (weighted)    │
-          │  Redrob Signals ─ Career Trajectory         │
-          │  Experience Fit ─ Profile Quality            │
-          │  Anomaly Detection (honeypot flags)          │
-          └──────────────────┬──────────────────────────┘
-                             │
-                             ▼
-          ┌─────────────────────────────────────────────┐
-          │  Weighted Geometric Mean Fusion              │
-          │  + Honeypot penalties (35% per flag)         │
-          │  + Negative requirement penalties            │
-          └──────────────────┬──────────────────────────┘
-                             │
-                             ▼
-          ┌─────────────────────────────────────────────┐
-          │  Rank → Deduplicate → Top 100 → Reasoning   │
-          │  Output: submission.csv                     │
-          └─────────────────────────────────────────────┘
-```
+<img width="1416" height="3500" alt="_- visual selection (2)" src="https://github.com/user-attachments/assets/5337e437-b3ca-46e4-87ad-faa0ca4ce8ea" />
+
 
 ---
 

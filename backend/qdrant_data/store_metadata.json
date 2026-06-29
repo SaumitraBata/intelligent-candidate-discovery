@@ -2,5 +2,5 @@
   "model_name": "BAAI/bge-small-en-v1.5",
   "candidate_count": 100000,
   "embedding_dimension": 384,
-  "computed_at": "2026-06-20T14:04:35.000567"
+  "computed_at": "2026-06-26T22:13:26.677723"
 }
